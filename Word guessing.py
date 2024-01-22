@@ -21,11 +21,13 @@ def word_guess(): #word guess function
     print('The goal of the game is simple. You can choose to play with words or phrases. \nFor words, you are allowed 5 incorrect letter guesses. No hints! You\'re only allowed 1 solve per round so make sure you\'ve got it down!')
     print('Okay. The word you\'re looking for has' ' ' +str(len(selected_word))+' letters!')
     
-    while '_' in guessed_word: #While loop. _ replaces letters. While there are _ the loop keeps going.
+     while '_' in guessed_word: #While loop. _ replaces letters. While there are _ the loop keeps going.
         print('Take a guess')
         print(guessed_word)
-        print('To solve, type Solve It. Remember though, you only get 1 chance to solve!')
-        if input().lower() == 'solve it': #If statements for solving words
+        print('To solve, type Solve. Remember though, you only get 1 chance to solve!')
+        my_guess = input().lower()
+        if input().lower() == 'solve':#if statements for solving
+            print('Okay take your guess.')
             my_guess = input().lower()
             if my_guess == selected_word:
                 print('Nice solve! Great job!\nWould you like to play again?')
@@ -39,24 +41,24 @@ def word_guess(): #word guess function
                     word_guess()
                 if input().lower() == 'no':
                     sys.exit()
-                    
-        my_guess = input().lower() #If statements for guessing letters
-        if my_guess in selected_word:
-            for i in range(len(selected_word)):
-                if selected_word[i] == my_guess:
-                    guessed_word[i] = my_guess
-            print(guessed_word)
-        elif my_guess not in guessed_word:
-            turn += 1
-            if turn == 5:
-                print('Oh no! You\'ve run out of guesses. The correct word was' +selected_word+'!\nDo you want to try again?')
-                if input().lower() == 'yes':
-                    word_guess()
-                if input().lower() == 'no':
-                    sys.exit()
-            if len(my_guess) != 1 or not my_guess.isalpha():
-                print('Please enter a single, alphabetical guess')
-                continue
+        else:
+            my_guess = input().lower() #If statements for guessing letters
+            if my_guess in selected_word:
+                for i in range(len(selected_word)):
+                    if selected_word[i] == my_guess:
+                        guessed_word[i] = my_guess
+                print(guessed_word)
+            elif my_guess not in guessed_word:
+                turn += 1
+                if turn == 5:
+                    print('Oh no! You\'ve run out of guesses. The correct word was' ' '+selected_word+'!\nDo you want to try again?')
+                    if input().lower() == 'yes':
+                        word_guess()
+                    if input().lower() == 'no':
+                        sys.exit()
+                if len(my_guess) != 1 or not my_guess.isalpha():
+                    print('Please enter a single, alphabetical guess')
+                    continue
 
 
 print('Would you like to play with words or phrases?')
