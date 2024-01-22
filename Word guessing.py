@@ -9,10 +9,6 @@ words_list = ["apple", "banana", "orange", "elephant", "guitar", "jazz",
 "silhouette", "grace", "cherry", "dolphin", "fable", "fantasy", "cascade", "crimson", "twinkle", "harbor", "lullaby", "captivate", "glisten", "cheer", "azure", "gentle", "triumph", "lullaby", "crescent", "whisper", 
 "stellar", "sunset", "whirlwind", "lagoon", "serenade", "luminary", "mellow"]
 
-phrase_list = ["bite the bullet", "break the ice", "burn the midnight oil", "hit the hay", "jump on the bandwagon", 
-"kick the bucket", "let the cat out of the bag", "pull someone's leg", "raining cats and dogs", "spill the beans", 
-"take the bull by the horns", "under the weather", "cost an arm and a leg", "burn bridges", "throw in the towel"]
-
 def word_guess(): #word guess function
     selected_word = random.choice(words_list)
     guessed_word = ['_'] *len(selected_word)
@@ -62,8 +58,9 @@ def word_guess(): #word guess function
                     break
 
 
-print('Would you like to play with words or phrases?')
-if input().lower() == 'words':
+print('Would you like to play Word Guess?')
+yn=input().lower()
+if yn == 'y':
     word_guess()
-if input().lower() == 'phrases':
-    phrase_guess
+else:
+    continue
